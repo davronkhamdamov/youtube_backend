@@ -2,6 +2,7 @@ import express from 'express'
 const app = express()
 import cors from 'cors'
 import env from 'dotenv'
+
 env.config()
 const PORT = process.env.PORT || 4001
 
