@@ -1,15 +1,14 @@
 import { Users, Videos } from '../model/index.js';
 
 const SignUp = async (req, res) => {
-    const [name, password] = req.headers.value.split('<><><><>')
+    const [name, password, img_url] = req.body
     const data = await Users.findOne({ where: { name } })
     if (data) {
         return res.status(405).send({
             message: "This user already registered"
         })
     }
-
-    await Users.create({ name, password, img_url: req.file.filename })
+    await Users.create({ name, password, img_url })
 
     res.status(201).send({
         message: 'User successfully added'
